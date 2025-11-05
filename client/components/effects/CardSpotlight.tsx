@@ -1,11 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 
 interface CardSpotlightProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export const CardSpotlight: React.FC<CardSpotlightProps> = ({ children, className = '' }) => {
+export const CardSpotlight: React.FC<CardSpotlightProps> = ({
+  children,
+  className = "",
+}) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });

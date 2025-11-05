@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface NavItem {
   label: string;
@@ -17,20 +17,20 @@ export const ResizableNavbar: React.FC<ResizableNavbarProps> = ({ items }) => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
       style={{
-        width: isScrolled ? '90%' : '100%',
-        margin: isScrolled ? '0 auto' : '0',
-        left: isScrolled ? '5%' : '0',
-        right: isScrolled ? '5%' : '0',
-        borderRadius: isScrolled ? '12px' : '0',
-        marginTop: isScrolled ? '10px' : '0',
+        width: isScrolled ? "90%" : "100%",
+        margin: isScrolled ? "0 auto" : "0",
+        left: isScrolled ? "5%" : "0",
+        right: isScrolled ? "5%" : "0",
+        borderRadius: isScrolled ? "12px" : "0",
+        marginTop: isScrolled ? "10px" : "0",
       }}
     >
       <div className="px-6 py-4 bg-black/40 backdrop-blur-lg border border-white/10 rounded-lg flex items-center justify-between">

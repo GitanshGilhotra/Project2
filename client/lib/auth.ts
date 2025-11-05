@@ -3,23 +3,34 @@ export interface User {
   email: string;
 }
 
-const STORAGE_KEY = 'app_user';
-const USERS_KEY = 'app_users';
+const STORAGE_KEY = "app_user";
+const USERS_KEY = "app_users";
 
 // Mock database of users
-const getStoredUsers = (): Record<string, { password: string; email: string }> => {
+const getStoredUsers = (): Record<
+  string,
+  { password: string; email: string }
+> => {
   const stored = localStorage.getItem(USERS_KEY);
-  return stored ? JSON.parse(stored) : {
-    'admin': { password: 'admin123', email: 'admin@example.com' },
-    'user': { password: 'user123', email: 'user@example.com' },
-  };
+  return stored
+    ? JSON.parse(stored)
+    : {
+        admin: { password: "admin123", email: "admin@example.com" },
+        user: { password: "user123", email: "user@example.com" },
+      };
 };
 
-const saveUsers = (users: Record<string, { password: string; email: string }>) => {
+const saveUsers = (
+  users: Record<string, { password: string; email: string }>,
+) => {
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
 };
 
-export const register = (username: string, email: string, password: string): boolean => {
+export const register = (
+  username: string,
+  email: string,
+  password: string,
+): boolean => {
   const users = getStoredUsers();
   if (users[username]) {
     return false; // User already exists
@@ -32,7 +43,7 @@ export const register = (username: string, email: string, password: string): boo
 export const login = (username: string, password: string): User | null => {
   const users = getStoredUsers();
   const user = users[username];
-  
+
   if (!user || user.password !== password) {
     return null;
   }

@@ -1,17 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 
 interface EvervaultCardProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+const CHARS =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
 
 const randomChar = () => CHARS[Math.floor(Math.random() * CHARS.length)];
 
-export const EvervaultCard: React.FC<EvervaultCardProps> = ({ children, className = '' }) => {
+export const EvervaultCard: React.FC<EvervaultCardProps> = ({
+  children,
+  className = "",
+}) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [scrambledText, setScrambledText] = useState('');
+  const [scrambledText, setScrambledText] = useState("");
   const divRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = () => {
@@ -24,14 +28,14 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({ children, classNam
       const interval = setInterval(() => {
         setScrambledText(
           text
-            .split('')
+            .split("")
             .map((char, index) => {
               if (iteration > maxIterations) {
                 return char;
               }
               return randomChar();
             })
-            .join('')
+            .join(""),
         );
         iteration++;
 
@@ -45,7 +49,7 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({ children, classNam
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setScrambledText('');
+    setScrambledText("");
   };
 
   return (
@@ -56,12 +60,14 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({ children, classNam
       className={`relative rounded-lg p-6 overflow-hidden cursor-pointer transition-all duration-500 ${className}`}
       style={{
         background: isHovered
-          ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2))'
-          : 'linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.6))',
+          ? "linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2))"
+          : "linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.6))",
         border: isHovered
-          ? '2px solid rgba(59, 130, 246, 0.5)'
-          : '2px solid rgba(100, 116, 139, 0.3)',
-        transform: isHovered ? 'scale(1.02) rotateX(5deg) rotateY(5deg)' : 'scale(1)',
+          ? "2px solid rgba(59, 130, 246, 0.5)"
+          : "2px solid rgba(100, 116, 139, 0.3)",
+        transform: isHovered
+          ? "scale(1.02) rotateX(5deg) rotateY(5deg)"
+          : "scale(1)",
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />

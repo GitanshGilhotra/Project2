@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   LineChart,
   Line,
@@ -14,39 +14,45 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from 'recharts';
-import { getCurrentUser, logout } from '@/lib/auth';
-import { AuroraBackground } from '@/components/effects/AuroraBackground';
-import { GlassCard, InteractiveCard, MinimalCard } from '@/components/effects/Cards';
-import { FloatingDock } from '@/components/effects/FloatingDock';
-import { ResizableNavbar } from '@/components/effects/ResizableNavbar';
+} from "recharts";
+import { getCurrentUser, logout } from "@/lib/auth";
+import { AuroraBackground } from "@/components/effects/AuroraBackground";
+import {
+  GlassCard,
+  InteractiveCard,
+  MinimalCard,
+} from "@/components/effects/Cards";
+import { FloatingDock } from "@/components/effects/FloatingDock";
+import { ResizableNavbar } from "@/components/effects/ResizableNavbar";
 
-const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981'];
+const COLORS = ["#3b82f6", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981"];
 
 const chartData = [
-  { month: 'Jan', revenue: 4000, users: 2400, growth: 24 },
-  { month: 'Feb', revenue: 3000, users: 1398, growth: 22 },
-  { month: 'Mar', revenue: 2000, users: 9800, growth: 29 },
-  { month: 'Apr', revenue: 2780, users: 3908, growth: 20 },
-  { month: 'May', revenue: 1890, users: 4800, growth: 25 },
-  { month: 'Jun', revenue: 2390, users: 3800, growth: 21 },
+  { month: "Jan", revenue: 4000, users: 2400, growth: 24 },
+  { month: "Feb", revenue: 3000, users: 1398, growth: 22 },
+  { month: "Mar", revenue: 2000, users: 9800, growth: 29 },
+  { month: "Apr", revenue: 2780, users: 3908, growth: 20 },
+  { month: "May", revenue: 1890, users: 4800, growth: 25 },
+  { month: "Jun", revenue: 2390, users: 3800, growth: 21 },
 ];
 
 const pieData = [
-  { name: 'Desktop', value: 400 },
-  { name: 'Mobile', value: 300 },
-  { name: 'Tablet', value: 300 },
-  { name: 'Other', value: 100 },
+  { name: "Desktop", value: 400 },
+  { name: "Mobile", value: 300 },
+  { name: "Tablet", value: 300 },
+  { name: "Other", value: 100 },
 ];
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const [user, setUser] = useState<{ username: string; email: string } | null>(null);
+  const [user, setUser] = useState<{ username: string; email: string } | null>(
+    null,
+  );
 
   useEffect(() => {
     const currentUser = getCurrentUser();
     if (!currentUser) {
-      navigate('/login');
+      navigate("/login");
     } else {
       setUser(currentUser);
     }
@@ -54,22 +60,22 @@ export default function Dashboard() {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Effects', href: '/effects' },
-    { label: 'Analytics', href: '/analytics' },
+    { label: "Home", href: "/" },
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Effects", href: "/effects" },
+    { label: "Analytics", href: "/analytics" },
   ];
 
   const dockItems = [
-    { icon: '📊', label: 'Dashboard', path: '/dashboard' },
-    { icon: '✨', label: 'Effects', path: '/effects' },
-    { icon: '📈', label: 'Analytics', path: '/analytics' },
-    { icon: '⚙️', label: 'Settings', path: '/settings', onClick: handleLogout },
-    { icon: '🚪', label: 'Logout', path: '/', onClick: handleLogout },
+    { icon: "📊", label: "Dashboard", path: "/dashboard" },
+    { icon: "✨", label: "Effects", path: "/effects" },
+    { icon: "📈", label: "Analytics", path: "/analytics" },
+    { icon: "⚙️", label: "Settings", path: "/settings", onClick: handleLogout },
+    { icon: "🚪", label: "Logout", path: "/", onClick: handleLogout },
   ];
 
   return (
@@ -82,7 +88,8 @@ export default function Dashboard() {
               Welcome, {user?.username}! 👋
             </h1>
             <p className="text-slate-400">
-              Here's your analytics dashboard with real-time insights and performance metrics.
+              Here's your analytics dashboard with real-time insights and
+              performance metrics.
             </p>
           </div>
 
@@ -115,7 +122,9 @@ export default function Dashboard() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             <GlassCard className="lg:col-span-2">
-              <h2 className="text-xl font-semibold text-white mb-6">Revenue Trend</h2>
+              <h2 className="text-xl font-semibold text-white mb-6">
+                Revenue Trend
+              </h2>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={chartData}>
                   <CartesianGrid stroke="rgba(255,255,255,0.1)" />
@@ -123,9 +132,9 @@ export default function Dashboard() {
                   <YAxis stroke="#94a3b8" />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: 'rgba(15, 23, 42, 0.8)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '8px',
+                      backgroundColor: "rgba(15, 23, 42, 0.8)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      borderRadius: "8px",
                     }}
                   />
                   <Legend />
@@ -148,7 +157,9 @@ export default function Dashboard() {
             </GlassCard>
 
             <GlassCard>
-              <h2 className="text-xl font-semibold text-white mb-6">Device Distribution</h2>
+              <h2 className="text-xl font-semibold text-white mb-6">
+                Device Distribution
+              </h2>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
@@ -162,14 +173,17 @@ export default function Dashboard() {
                     dataKey="value"
                   >
                     {pieData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
                     ))}
                   </Pie>
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: 'rgba(15, 23, 42, 0.8)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '8px',
+                      backgroundColor: "rgba(15, 23, 42, 0.8)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      borderRadius: "8px",
                     }}
                   />
                 </PieChart>
@@ -179,7 +193,9 @@ export default function Dashboard() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <GlassCard>
-              <h2 className="text-xl font-semibold text-white mb-6">User Metrics</h2>
+              <h2 className="text-xl font-semibold text-white mb-6">
+                User Metrics
+              </h2>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={chartData}>
                   <CartesianGrid stroke="rgba(255,255,255,0.1)" />
@@ -187,9 +203,9 @@ export default function Dashboard() {
                   <YAxis stroke="#94a3b8" />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: 'rgba(15, 23, 42, 0.8)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '8px',
+                      backgroundColor: "rgba(15, 23, 42, 0.8)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      borderRadius: "8px",
                     }}
                   />
                   <Legend />
@@ -199,16 +215,22 @@ export default function Dashboard() {
             </GlassCard>
 
             <GlassCard>
-              <h2 className="text-xl font-semibold text-white mb-6">Top Insights</h2>
+              <h2 className="text-xl font-semibold text-white mb-6">
+                Top Insights
+              </h2>
               <div className="space-y-4">
                 <InteractiveCard>
-                  <h3 className="text-white font-semibold">Peak Traffic Hours</h3>
+                  <h3 className="text-white font-semibold">
+                    Peak Traffic Hours
+                  </h3>
                   <p className="text-slate-400 text-sm mt-2">
                     Monday to Friday: 2 PM - 6 PM EST
                   </p>
                 </InteractiveCard>
                 <InteractiveCard>
-                  <h3 className="text-white font-semibold">Most Engaged Content</h3>
+                  <h3 className="text-white font-semibold">
+                    Most Engaged Content
+                  </h3>
                   <p className="text-slate-400 text-sm mt-2">
                     Video tutorials generate 3.5x more engagement
                   </p>
@@ -224,7 +246,9 @@ export default function Dashboard() {
           </div>
 
           <GlassCard>
-            <h2 className="text-xl font-semibold text-white mb-6">Recent Activity</h2>
+            <h2 className="text-xl font-semibold text-white mb-6">
+              Recent Activity
+            </h2>
             <div className="space-y-3">
               {[1, 2, 3, 4, 5].map((item) => (
                 <div
@@ -232,10 +256,12 @@ export default function Dashboard() {
                   className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
                 >
                   <div>
-                    <p className="text-white font-medium">User Activity #{item}</p>
+                    <p className="text-white font-medium">
+                      User Activity #{item}
+                    </p>
                     <p className="text-slate-400 text-sm">2 hours ago</p>
                   </div>
-                  <span className="text-2xl">{'📊'}</span>
+                  <span className="text-2xl">{"📊"}</span>
                 </div>
               ))}
             </div>
