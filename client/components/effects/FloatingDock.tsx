@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface DockItem {
   icon: React.ReactNode;
@@ -42,12 +42,12 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ items }) => {
             style={{
               transform:
                 hoveredIndex === index
-                  ? 'translateY(-20px) scale(1.3)'
-                  : 'translateY(0) scale(1)',
+                  ? "translateY(-20px) scale(1.3)"
+                  : "translateY(0) scale(1)",
               backgroundColor:
                 hoveredIndex === index
-                  ? 'rgba(6, 182, 212, 0.15)'
-                  : 'transparent',
+                  ? "rgba(6, 182, 212, 0.15)"
+                  : "transparent",
             }}
           >
             <div className="text-2xl text-white">{item.icon}</div>

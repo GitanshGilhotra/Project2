@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const SpinnerLoader: React.FC = () => (
   <div className="w-5 h-5 border-2 border-slate-400/30 border-t-cyan-400 rounded-full animate-spin" />
@@ -9,11 +9,11 @@ export const DotLoader: React.FC = () => (
     <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
     <div
       className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"
-      style={{ animationDelay: '0.2s' }}
+      style={{ animationDelay: "0.2s" }}
     />
     <div
       className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"
-      style={{ animationDelay: '0.4s' }}
+      style={{ animationDelay: "0.4s" }}
     />
   </div>
 );
@@ -33,7 +33,10 @@ export const BarLoader: React.FC = () => (
 export const RingLoader: React.FC = () => (
   <div className="relative w-6 h-6">
     <div className="absolute inset-0 border-2 border-slate-400/30 rounded-full animate-spin" />
-    <div className="absolute inset-1 border-2 border-transparent border-t-cyan-400 rounded-full animate-spin" style={{ animationDirection: 'reverse' }} />
+    <div
+      className="absolute inset-1 border-2 border-transparent border-t-cyan-400 rounded-full animate-spin"
+      style={{ animationDirection: "reverse" }}
+    />
   </div>
 );
 

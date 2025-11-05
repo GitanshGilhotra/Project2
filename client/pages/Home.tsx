@@ -1,7 +1,7 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { GradientCard } from '@/components/effects/Cards';
-import { isAuthenticated } from '@/lib/auth';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { GradientCard } from "@/components/effects/Cards";
+import { isAuthenticated } from "@/lib/auth";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -27,14 +27,14 @@ export default function Home() {
           </div>
           {authenticated ? (
             <button
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate("/dashboard")}
               className="px-6 py-2 rounded-lg bg-cyan-500 text-white font-medium hover:bg-cyan-600 transition-colors"
             >
               Go to Dashboard
             </button>
           ) : (
             <button
-              onClick={() => navigate('/login')}
+              onClick={() => navigate("/login")}
               className="px-6 py-2 rounded-lg bg-cyan-500 text-white font-medium hover:bg-cyan-600 transition-colors"
             >
               Sign In
@@ -51,21 +51,22 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
-            A professional, production-ready dashboard featuring beautiful CSS effects, 
-            real-time analytics, secure authentication, and responsive design.
+            A professional, production-ready dashboard featuring beautiful CSS
+            effects, real-time analytics, secure authentication, and responsive
+            design.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
             {authenticated ? (
               <>
                 <button
-                  onClick={() => navigate('/dashboard')}
+                  onClick={() => navigate("/dashboard")}
                   className="px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
                 >
                   Open Dashboard
                 </button>
                 <button
-                  onClick={() => navigate('/effects')}
+                  onClick={() => navigate("/effects")}
                   className="px-8 py-4 rounded-lg bg-slate-700/50 text-white font-semibold hover:bg-slate-700 transition-colors border border-slate-600"
                 >
                   Explore Effects
@@ -74,13 +75,13 @@ export default function Home() {
             ) : (
               <>
                 <button
-                  onClick={() => navigate('/login')}
+                  onClick={() => navigate("/login")}
                   className="px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
                 >
                   Get Started
                 </button>
                 <button
-                  onClick={() => navigate('/effects')}
+                  onClick={() => navigate("/effects")}
                   className="px-8 py-4 rounded-lg bg-slate-700/50 text-white font-semibold hover:bg-slate-700 transition-colors border border-slate-600"
                 >
                   View Effects
@@ -93,48 +94,59 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
             <div className="group p-8 rounded-2xl bg-slate-800/50 backdrop-blur border border-slate-700/50 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10">
               <div className="text-4xl mb-4">✨</div>
-              <h3 className="text-xl font-semibold text-white mb-3">Premium Effects</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Premium Effects
+              </h3>
               <p className="text-slate-400">
-                Beautiful UI effects including animations, gradients, and interactions—all built with pure CSS and Canvas.
+                Beautiful UI effects including animations, gradients, and
+                interactions—all built with pure CSS and Canvas.
               </p>
             </div>
             <div className="group p-8 rounded-2xl bg-slate-800/50 backdrop-blur border border-slate-700/50 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10">
               <div className="text-4xl mb-4">🔐</div>
-              <h3 className="text-xl font-semibold text-white mb-3">Secure Auth</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Secure Auth
+              </h3>
               <p className="text-slate-400">
-                Complete authentication system with user registration, login, and local storage. Ready for backend integration.
+                Complete authentication system with user registration, login,
+                and local storage. Ready for backend integration.
               </p>
             </div>
             <div className="group p-8 rounded-2xl bg-slate-800/50 backdrop-blur border border-slate-700/50 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10">
               <div className="text-4xl mb-4">📊</div>
-              <h3 className="text-xl font-semibold text-white mb-3">Real Analytics</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Real Analytics
+              </h3>
               <p className="text-slate-400">
-                Comprehensive dashboards with live charts, graphs, and detailed metrics using Recharts.
+                Comprehensive dashboards with live charts, graphs, and detailed
+                metrics using Recharts.
               </p>
             </div>
           </div>
 
           {/* Features Grid */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-white mb-12">Everything You Need</h2>
+            <h2 className="text-3xl font-bold text-white mb-12">
+              Everything You Need
+            </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                'Background Beams',
-                'Aurora Background',
-                'Card Spotlight',
-                'Canvas Reveal',
-                'Evervault Card',
-                'Gradient Animation',
-                'Floating Dock',
-                'Resizable Navbar',
-                'Stateful Button',
-                'Multiple Loaders',
-                'Glass Cards',
-                'Analytics Charts',
-                'User Auth',
-                'Responsive',
-                'TypeScript',
-                'Tailwind CSS',
+                "Background Beams",
+                "Aurora Background",
+                "Card Spotlight",
+                "Canvas Reveal",
+                "Evervault Card",
+                "Gradient Animation",
+                "Floating Dock",
+                "Resizable Navbar",
+                "Stateful Button",
+                "Multiple Loaders",
+                "Glass Cards",
+                "Analytics Charts",
+                "User Auth",
+                "Responsive",
+                "TypeScript",
+                "Tailwind CSS",
               ].map((feature, idx) => (
                 <div
                   key={idx}
@@ -148,10 +160,14 @@ export default function Home() {
 
           {/* CTA Section */}
           <div className="p-12 rounded-2xl bg-gradient-to-r from-slate-800/50 to-slate-800/30 border border-slate-700/50 backdrop-blur">
-            <h2 className="text-2xl font-bold text-white mb-4">Ready to explore?</h2>
-            <p className="text-slate-400 mb-6">Start with demo credentials or create your own account.</p>
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Ready to explore?
+            </h2>
+            <p className="text-slate-400 mb-6">
+              Start with demo credentials or create your own account.
+            </p>
             <button
-              onClick={() => navigate('/login')}
+              onClick={() => navigate("/login")}
               className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
             >
               Sign In Now

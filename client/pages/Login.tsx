@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { login, register } from '@/lib/auth';
-import { GlassCard } from '@/components/effects/Cards';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login, register } from "@/lib/auth";
+import { GlassCard } from "@/components/effects/Cards";
 
 export default function Login() {
   const navigate = useNavigate();
   const [isRegister, setIsRegister] = useState(false);
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
     setLoading(true);
-    setError('');
-    
+    setError("");
+
     if (!username || !password) {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
       setLoading(false);
       return;
     }
 
     const user = login(username, password);
     if (user) {
-      navigate('/dashboard');
+      navigate("/dashboard");
     } else {
-      setError('Invalid username or password');
+      setError("Invalid username or password");
     }
     setLoading(false);
   };
 
   const handleRegister = async () => {
     setLoading(true);
-    setError('');
+    setError("");
 
     if (!username || !email || !password) {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
       setLoading(false);
       return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError("Password must be at least 6 characters");
       setLoading(false);
       return;
     }
@@ -51,10 +51,10 @@ export default function Login() {
     if (success) {
       const user = login(username, password);
       if (user) {
-        navigate('/dashboard');
+        navigate("/dashboard");
       }
     } else {
-      setError('Username already exists');
+      setError("Username already exists");
     }
     setLoading(false);
   };
@@ -73,12 +73,12 @@ export default function Login() {
             <span className="text-white font-bold text-lg">D</span>
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">
-            {isRegister ? 'Create Account' : 'Welcome Back'}
+            {isRegister ? "Create Account" : "Welcome Back"}
           </h1>
           <p className="text-slate-400">
             {isRegister
-              ? 'Join us to access your dashboard'
-              : 'Sign in to your dashboard'}
+              ? "Join us to access your dashboard"
+              : "Sign in to your dashboard"}
           </p>
         </div>
 
@@ -140,7 +140,7 @@ export default function Login() {
             disabled={loading}
             className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all disabled:opacity-50 duration-300"
           >
-            {loading ? 'Loading...' : isRegister ? 'Create Account' : 'Sign In'}
+            {loading ? "Loading..." : isRegister ? "Create Account" : "Sign In"}
           </button>
 
           <div className="relative">
@@ -154,22 +154,26 @@ export default function Login() {
 
           <div className="text-center">
             <p className="text-slate-400 text-sm">
-              {isRegister ? 'Already have an account?' : "Don't have an account?"}{' '}
+              {isRegister
+                ? "Already have an account?"
+                : "Don't have an account?"}{" "}
               <button
                 onClick={() => {
                   setIsRegister(!isRegister);
-                  setError('');
+                  setError("");
                 }}
                 className="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
               >
-                {isRegister ? 'Sign In' : 'Sign Up'}
+                {isRegister ? "Sign In" : "Sign Up"}
               </button>
             </p>
           </div>
         </div>
 
         <div className="mt-8 p-6 rounded-lg bg-slate-800/30 border border-slate-700/30 backdrop-blur-sm">
-          <p className="text-xs font-semibold text-slate-400 mb-4">DEMO CREDENTIALS</p>
+          <p className="text-xs font-semibold text-slate-400 mb-4">
+            DEMO CREDENTIALS
+          </p>
           <div className="space-y-2 text-sm">
             <div className="flex items-center justify-between">
               <span className="text-slate-400">Username:</span>
@@ -177,7 +181,9 @@ export default function Login() {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-slate-400">Password:</span>
-              <span className="text-cyan-400 font-mono font-medium">admin123</span>
+              <span className="text-cyan-400 font-mono font-medium">
+                admin123
+              </span>
             </div>
           </div>
         </div>

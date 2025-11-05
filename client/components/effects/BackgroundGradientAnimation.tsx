@@ -1,15 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-export const BackgroundGradientAnimation: React.FC<{ children?: React.ReactNode }> = ({
-  children,
-}) => {
+export const BackgroundGradientAnimation: React.FC<{
+  children?: React.ReactNode;
+}> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = `
       @keyframes gradient-shift {
         0% {
