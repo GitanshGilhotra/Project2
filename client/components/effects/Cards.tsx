@@ -1,16 +1,13 @@
-import React from "react";
+import React from 'react';
 
 interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export const GlassCard: React.FC<GlassCardProps> = ({
-  children,
-  className = "",
-}) => (
+export const GlassCard: React.FC<GlassCardProps> = ({ children, className = '' }) => (
   <div
-    className={`rounded-xl p-6 backdrop-blur-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 ${className}`}
+    className={`rounded-xl p-6 backdrop-blur-lg border border-slate-700/50 bg-slate-800/50 hover:bg-slate-800/60 transition-all duration-300 shadow-lg ${className}`}
   >
     {children}
   </div>
@@ -24,11 +21,11 @@ interface GradientCardProps {
 
 export const GradientCard: React.FC<GradientCardProps> = ({
   children,
-  gradient = "from-blue-500 to-purple-600",
-  className = "",
+  gradient = 'from-cyan-500 to-blue-600',
+  className = '',
 }) => (
   <div
-    className={`rounded-xl p-6 bg-gradient-to-br ${gradient} hover:shadow-lg transition-all duration-300 ${className}`}
+    className={`rounded-xl p-6 bg-gradient-to-br ${gradient} hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 ${className}`}
   >
     <div className="text-white">{children}</div>
   </div>
@@ -45,10 +42,10 @@ export const MinimalCard: React.FC<MinimalCardProps> = ({
   title,
   description,
   icon,
-  className = "",
+  className = '',
 }) => (
   <div
-    className={`rounded-lg p-4 bg-slate-900/50 border border-slate-700 hover:border-slate-600 transition-all duration-300 ${className}`}
+    className={`rounded-lg p-4 bg-slate-800/50 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 ${className}`}
   >
     <div className="flex items-start gap-3">
       {icon && <div className="text-2xl">{icon}</div>}
@@ -69,7 +66,7 @@ interface InteractiveCardProps {
 export const InteractiveCard: React.FC<InteractiveCardProps> = ({
   children,
   onHover,
-  className = "",
+  className = '',
 }) => {
   const [isHovered, setIsHovered] = React.useState(false);
 
@@ -80,20 +77,15 @@ export const InteractiveCard: React.FC<InteractiveCardProps> = ({
         onHover?.();
       }}
       onMouseLeave={() => setIsHovered(false)}
-      className={`rounded-lg p-6 cursor-pointer transition-all duration-300 ${className}`}
+      className={`rounded-lg p-6 cursor-pointer transition-all duration-300 border border-slate-700/50 ${className}`}
       style={{
-        transform: isHovered
-          ? "translateY(-8px) scale(1.02)"
-          : "translateY(0) scale(1)",
+        transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
         background: isHovered
-          ? "linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(168, 85, 247, 0.15))"
-          : "rgba(15, 23, 42, 0.6)",
+          ? 'rgba(71, 85, 105, 0.2)'
+          : 'rgba(30, 41, 59, 0.5)',
         boxShadow: isHovered
-          ? "0 20px 40px rgba(59, 130, 246, 0.2)"
-          : "0 10px 20px rgba(0, 0, 0, 0.1)",
-        border: isHovered
-          ? "2px solid rgba(59, 130, 246, 0.4)"
-          : "2px solid rgba(100, 116, 139, 0.3)",
+          ? '0 12px 24px rgba(6, 182, 212, 0.1)'
+          : '0 4px 8px rgba(0, 0, 0, 0.1)',
       }}
     >
       {children}
