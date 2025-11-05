@@ -1,14 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
 
 interface CardSpotlightProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export const CardSpotlight: React.FC<CardSpotlightProps> = ({
-  children,
-  className = "",
-}) => {
+export const CardSpotlight: React.FC<CardSpotlightProps> = ({ children, className = '' }) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -52,12 +49,14 @@ export const CardSpotlight: React.FC<CardSpotlightProps> = ({
       style={{
         background: `
           radial-gradient(
-            circle 600px at ${position.x}px ${position.y}px,
-            rgba(59, 130, 246, ${opacity * 0.15}),
+            circle 400px at ${position.x}px ${position.y}px,
+            rgba(6, 182, 212, ${opacity * 0.1}),
             transparent 100%
           ),
-          linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9))
+          linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8))
         `,
+        border: `2px solid rgba(71, 85, 105, ${0.3 + opacity * 0.2})`,
+        transition: 'border-color 0.3s ease',
       }}
     >
       {children}
