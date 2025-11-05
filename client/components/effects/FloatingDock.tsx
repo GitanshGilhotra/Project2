@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface DockItem {
   icon: React.ReactNode;
@@ -30,7 +30,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ items }) => {
       ref={dockRef}
       className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
     >
-      <div className="flex items-end justify-center gap-2 px-4 py-3 bg-slate-900/80 backdrop-blur-xl rounded-3xl border border-slate-700/50 shadow-2xl">
+      <div className="flex items-end justify-center gap-2 px-4 py-3 bg-white border border-gray-300 rounded-3xl shadow-2xl">
         {items.map((item, index) => (
           <button
             key={index}
@@ -42,17 +42,17 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ items }) => {
             style={{
               transform:
                 hoveredIndex === index
-                  ? "translateY(-20px) scale(1.3)"
-                  : "translateY(0) scale(1)",
+                  ? 'translateY(-20px) scale(1.3)'
+                  : 'translateY(0) scale(1)',
               backgroundColor:
                 hoveredIndex === index
-                  ? "rgba(6, 182, 212, 0.15)"
-                  : "transparent",
+                  ? '#f3f4f6'
+                  : 'transparent',
             }}
           >
-            <div className="text-2xl text-white">{item.icon}</div>
+            <div className="text-2xl text-black">{item.icon}</div>
             {hoveredIndex === index && (
-              <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none border border-slate-700/50">
+              <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none border border-gray-400">
                 {item.label}
               </div>
             )}
