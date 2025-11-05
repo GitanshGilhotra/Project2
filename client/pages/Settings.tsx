@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getCurrentUser, logout } from "@/lib/auth";
-import { AuroraBackground } from "@/components/effects/AuroraBackground";
-import { GlassCard, MinimalCard } from "@/components/effects/Cards";
-import { FloatingDock } from "@/components/effects/FloatingDock";
-import { ResizableNavbar } from "@/components/effects/ResizableNavbar";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getCurrentUser, logout } from '@/lib/auth';
+import { GlassCard } from '@/components/effects/Cards';
+import { FloatingDock } from '@/components/effects/FloatingDock';
+import { ResizableNavbar } from '@/components/effects/ResizableNavbar';
 
 export default function Settings() {
   const navigate = useNavigate();
@@ -13,120 +12,113 @@ export default function Settings() {
   const [darkMode, setDarkMode] = useState(true);
 
   if (!user) {
-    navigate("/login");
+    navigate('/login');
     return null;
   }
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate('/login');
   };
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Dashboard", href: "/dashboard" },
-    { label: "Effects", href: "/effects" },
-    { label: "Analytics", href: "/analytics" },
+    { label: 'Home', href: '/' },
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Effects', href: '/effects' },
+    { label: 'Analytics', href: '/analytics' },
   ];
 
   const dockItems = [
-    { icon: "📊", label: "Dashboard", path: "/dashboard" },
-    { icon: "✨", label: "Effects", path: "/effects" },
-    { icon: "📈", label: "Analytics", path: "/analytics" },
-    { icon: "⚙️", label: "Settings", path: "/settings" },
-    { icon: "🚪", label: "Logout", path: "/", onClick: handleLogout },
+    { icon: '📊', label: 'Dashboard', path: '/dashboard' },
+    { icon: '✨', label: 'Effects', path: '/effects' },
+    { icon: '📈', label: 'Analytics', path: '/analytics' },
+    { icon: '⚙️', label: 'Settings', path: '/settings' },
+    { icon: '🚪', label: 'Logout', path: '/', onClick: handleLogout },
   ];
 
   return (
-    <AuroraBackground>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <ResizableNavbar items={navItems} />
       <div className="min-h-screen pt-24 px-6 pb-24">
         <div className="max-w-2xl mx-auto">
           <div className="mb-12">
-            <h1 className="text-4xl font-bold text-white mb-2">Settings ⚙️</h1>
-            <p className="text-slate-400">
-              Manage your account and application preferences
-            </p>
+            <h1 className="text-4xl font-bold text-white mb-2">Settings</h1>
+            <p className="text-slate-400">Manage your account and application preferences</p>
           </div>
 
-          <GlassCard className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-6">
-              Account Information
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <label className="text-slate-400 text-sm">Username</label>
-                <p className="text-white text-lg font-semibold">
-                  {user.username}
-                </p>
+          <GlassCard className="bg-slate-800/50 backdrop-blur border border-slate-700/50 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6">Account Information</h2>
+            <div className="space-y-6">
+              <div className="pb-6 border-b border-slate-700/50">
+                <label className="text-slate-400 text-sm font-medium">Username</label>
+                <p className="text-white text-lg font-semibold mt-2">{user.username}</p>
+              </div>
+              <div className="pb-6 border-b border-slate-700/50">
+                <label className="text-slate-400 text-sm font-medium">Email Address</label>
+                <p className="text-white text-lg font-semibold mt-2">{user.email}</p>
               </div>
               <div>
-                <label className="text-slate-400 text-sm">Email Address</label>
-                <p className="text-white text-lg font-semibold">{user.email}</p>
-              </div>
-              <div>
-                <label className="text-slate-400 text-sm">Account Status</label>
-                <p className="text-green-400 text-lg font-semibold">✓ Active</p>
+                <label className="text-slate-400 text-sm font-medium">Account Status</label>
+                <div className="flex items-center gap-2 mt-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                  <span className="text-green-400 font-semibold">Active</span>
+                </div>
               </div>
             </div>
           </GlassCard>
 
-          <GlassCard className="mb-8">
+          <GlassCard className="bg-slate-800/50 backdrop-blur border border-slate-700/50 mb-8">
             <h2 className="text-2xl font-bold text-white mb-6">Preferences</h2>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+              <div className="flex items-center justify-between p-4 rounded-lg bg-slate-700/30 hover:bg-slate-700/50 transition-colors border border-slate-600/50">
                 <div>
                   <h3 className="text-white font-semibold">Dark Mode</h3>
-                  <p className="text-slate-400 text-sm">Enable dark theme</p>
+                  <p className="text-slate-400 text-sm">Enable dark theme for the interface</p>
                 </div>
                 <button
                   onClick={() => setDarkMode(!darkMode)}
-                  className={`px-4 py-2 rounded-lg transition-colors ${
+                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
                     darkMode
-                      ? "bg-blue-500 text-white"
-                      : "bg-slate-700 text-slate-300"
+                      ? 'bg-cyan-500 text-white'
+                      : 'bg-slate-600 text-slate-300'
                   }`}
                 >
-                  {darkMode ? "On" : "Off"}
+                  {darkMode ? 'On' : 'Off'}
                 </button>
               </div>
 
-              <div className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+              <div className="flex items-center justify-between p-4 rounded-lg bg-slate-700/30 hover:bg-slate-700/50 transition-colors border border-slate-600/50">
                 <div>
                   <h3 className="text-white font-semibold">Notifications</h3>
-                  <p className="text-slate-400 text-sm">
-                    Receive email updates
-                  </p>
+                  <p className="text-slate-400 text-sm">Receive email updates and alerts</p>
                 </div>
                 <button
                   onClick={() => setNotifications(!notifications)}
-                  className={`px-4 py-2 rounded-lg transition-colors ${
+                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
                     notifications
-                      ? "bg-blue-500 text-white"
-                      : "bg-slate-700 text-slate-300"
+                      ? 'bg-cyan-500 text-white'
+                      : 'bg-slate-600 text-slate-300'
                   }`}
                 >
-                  {notifications ? "On" : "Off"}
+                  {notifications ? 'On' : 'Off'}
                 </button>
               </div>
             </div>
           </GlassCard>
 
-          <GlassCard className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-6">
-              Application Info
-            </h2>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between text-slate-400">
-                <span>Version</span>
+          <GlassCard className="bg-slate-800/50 backdrop-blur border border-slate-700/50 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6">Application Info</h2>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                <span className="text-slate-400">Version</span>
                 <span className="text-white font-semibold">1.0.0</span>
               </div>
-              <div className="flex items-center justify-between text-slate-400 border-t border-white/10 pt-3">
-                <span>Build</span>
+              <div className="flex items-center justify-between p-4 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                <span className="text-slate-400">Build</span>
                 <span className="text-white font-semibold">Production</span>
               </div>
-              <div className="flex items-center justify-between text-slate-400 border-t border-white/10 pt-3">
-                <span>Last Updated</span>
+              <div className="flex items-center justify-between p-4 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                <span className="text-slate-400">Last Updated</span>
                 <span className="text-white font-semibold">Today</span>
               </div>
             </div>
@@ -135,18 +127,18 @@ export default function Settings() {
           <div className="space-y-4">
             <button
               onClick={handleLogout}
-              className="w-full px-6 py-3 rounded-lg bg-red-500/20 text-red-400 font-semibold hover:bg-red-500/30 transition-colors border border-red-500/30"
+              className="w-full px-6 py-4 rounded-lg bg-red-500/20 text-red-400 font-semibold hover:bg-red-500/30 transition-colors border border-red-500/30 text-base"
             >
-              Logout
+              Sign Out
             </button>
             <p className="text-center text-slate-500 text-sm">
-              All your data is stored locally in your browser
+              All your data is stored securely in local storage
             </p>
           </div>
         </div>
       </div>
 
       <FloatingDock items={dockItems} />
-    </AuroraBackground>
+    </div>
   );
 }
