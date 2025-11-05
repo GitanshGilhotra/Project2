@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
 
 interface Beam {
   x: number;
@@ -8,9 +8,7 @@ interface Beam {
   life: number;
 }
 
-export const BackgroundBeams: React.FC<{ children?: React.ReactNode }> = ({
-  children,
-}) => {
+export const BackgroundBeams: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const beamsRef = useRef<Beam[]>([]);
 
@@ -18,7 +16,7 @@ export const BackgroundBeams: React.FC<{ children?: React.ReactNode }> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     canvas.width = window.innerWidth;
@@ -29,7 +27,7 @@ export const BackgroundBeams: React.FC<{ children?: React.ReactNode }> = ({
       canvas.height = window.innerHeight;
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     const createBeam = () => {
       const angle = Math.random() * Math.PI * 2;
@@ -44,7 +42,7 @@ export const BackgroundBeams: React.FC<{ children?: React.ReactNode }> = ({
     };
 
     const animate = () => {
-      ctx.fillStyle = "rgba(15, 23, 42, 0.5)";
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       if (beamsRef.current.length < 8 && Math.random() > 0.97) {
@@ -60,21 +58,16 @@ export const BackgroundBeams: React.FC<{ children?: React.ReactNode }> = ({
           beam.x - 30,
           beam.y - 30,
           beam.x + 30,
-          beam.y + 30,
+          beam.y + 30
         );
-        gradient.addColorStop(0, `rgba(6, 182, 212, 0)`);
-        gradient.addColorStop(0.5, `rgba(6, 182, 212, ${beam.life * 0.1})`);
-        gradient.addColorStop(1, `rgba(6, 182, 212, 0)`);
+        gradient.addColorStop(0, `rgba(0, 0, 0, 0)`);
+        gradient.addColorStop(0.5, `rgba(0, 0, 0, ${beam.life * 0.05})`);
+        gradient.addColorStop(1, `rgba(0, 0, 0, 0)`);
 
         ctx.fillStyle = gradient;
         ctx.fillRect(beam.x - 30, beam.y - 30, 60, 60);
 
-        if (
-          beam.x > canvas.width ||
-          beam.x < 0 ||
-          beam.y > canvas.height ||
-          beam.y < 0
-        ) {
+        if (beam.x > canvas.width || beam.x < 0 || beam.y > canvas.height || beam.y < 0) {
           return beam.life > 0;
         }
         return true;
@@ -86,7 +79,7 @@ export const BackgroundBeams: React.FC<{ children?: React.ReactNode }> = ({
     animate();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -95,11 +88,11 @@ export const BackgroundBeams: React.FC<{ children?: React.ReactNode }> = ({
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-0"
-        style={{
-          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
-        }}
+        style={{ background: '#ffffff' }}
       />
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10">
+        {children}
+      </div>
     </div>
   );
 };
