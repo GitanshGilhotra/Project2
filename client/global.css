@@ -95,10 +95,6 @@
     @apply border-border;
   }
 
-  html {
-    @apply light;
-  }
-
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rounding" 1;
